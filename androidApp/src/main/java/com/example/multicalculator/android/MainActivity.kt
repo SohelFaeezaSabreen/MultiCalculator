@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.layout.height
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.foundation.layout.Row
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,8 +52,13 @@ fun CalcView(){
 }
 
 @Composable
-fun CalcRow(){
-
+fun CalcRow(display: MutableState<String>, startNum: Int, numButtons: Int){
+    val endNum = startNum + numButtons
+    Row(modifier = Modifier.padding(0.dp)) {
+        for (i in startNum until endNum){
+            CalcNumericButton(i, display)
+        }
+    }
 }
 
 @Composable
